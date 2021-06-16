@@ -8,6 +8,8 @@
          const BtnEnviar = document.getElementById("enviar");
          const template = document.getElementById("template").content;
          const tBody = document.getElementById("aqui")
+         let identificador 
+         let identificadorInt
          const fragment = document.createDocumentFragment()
 
 
@@ -60,28 +62,39 @@
          }
 
          tBody.addEventListener("click", e => {
-             e.preventDefault
-             let identificador = e.target.textContent
-             let identificadorInt = parseInt(identificador)
-             console.log(identificador, identificadorInt)
-             document.querySelector(".botones").style.opacity = "0"
+            e.preventDefault
+            if (e.target.value.contains== document.querySelectorAll("td")[0]){
+            document.querySelector(".contenedor-boton").style.opacity="1"
+            
+             identificador = e.target.textContent
+             identificadorInt = parseInt(identificador)}
+         })
 
-             incidencia.forEach(element => {
+        
+         document.getElementById("erase").addEventListener("click", e =>{
+            e.preventDefault()
+            
+            document.querySelector(".contenedor-boton").style.opacity="0"
+            
+            incidencia.forEach(element => {
 
-                 const indice = incidencia.findIndex(ind => ind == element)
-                 console.log(element.id)
-                 if (identificadorInt === element.id) {
+                const indice = incidencia.findIndex(ind => ind == element)
+               
+                if (identificadorInt === element.id) {
 
-                     borrar(indice)
-                     return
+                    borrar(indice)
+                    return
 
-                 }
+                }
 
 
 
-             })
+            })
 
          })
+        
+
+        
 
          const borrar = (erase) => {
              console.log(erase)
@@ -94,17 +107,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-     })
+        })
