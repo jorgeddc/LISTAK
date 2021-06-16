@@ -89,7 +89,7 @@
                 const indice = incidencia.findIndex(ind => ind == element)
                
                 if (identificadorInt === element.id) {
-
+                     
                     borrar(indice)
                     return
 
@@ -100,7 +100,28 @@
             })
 
          })
-        
+
+        document.getElementById("important").addEventListener("click", e =>{
+           
+            e.preventDefault()
+            document.querySelector(".contenedor-boton").style.opacity="0"
+
+           incidencia.forEach(element=>{
+                 const indice = incidencia.findIndex(ind=> ind == element)
+                 
+                 if(identificadorInt === element.id)
+                 {
+                    
+                       document.querySelectorAll(".contenedor-incidencia")[indice].style.backgroundColor="red"
+                       document.querySelectorAll(".contenedor-incidencia")[indice].style.color="white"
+
+                     return
+                 }
+
+           })
+
+           
+        })
 
         /*FUNCION DE BORRADO */      
 
@@ -110,9 +131,4 @@
 
              pintarTabla()
          }
-
-
-
-
-
-        })
+        }) 
