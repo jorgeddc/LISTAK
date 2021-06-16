@@ -46,10 +46,13 @@
              tBody.innerHTML = ""
              incidencia.forEach(element => {
                  const clone = template.cloneNode(true)
-                 clone.querySelectorAll("td")[0].textContent = element.dia
-                 clone.querySelectorAll("td")[1].textContent = element.tecnico
-                 clone.querySelectorAll("td")[2].textContent = element.cliente
-                 clone.querySelectorAll("td")[3].textContent = element.detalle
+                 clone.querySelectorAll("td")[0].textContent = element.id
+                 clone.querySelectorAll("td")[1].textContent = element.dia
+                 clone.querySelectorAll("td")[2].textContent = element.tecnico
+                 clone.querySelectorAll("td")[3].textContent = element.cliente
+                 clone.querySelectorAll("td")[4].textContent = element.detalle
+
+
                  fragment.appendChild(clone)
 
              })
@@ -59,25 +62,20 @@
          tBody.addEventListener("click", e => {
              e.preventDefault
              let identificador = e.target.textContent
+             let identificadorInt = parseInt(identificador)
+             console.log(identificador, identificadorInt)
              document.querySelector(".botones").style.opacity = "0"
-             incidencia.forEach(element => {
-                 const indice = incidencia.findIndex(ind => ind == element)
 
-                 if (identificador === element.cliente) {
+             incidencia.forEach(element => {
+
+                 const indice = incidencia.findIndex(ind => ind == element)
+                 console.log(element.id)
+                 if (identificadorInt === element.id) {
+
                      borrar(indice)
                      return
+
                  }
-
-
-                 if (identificador === element.tecnico)
-                     borrar(indice)
-
-                 if (identificador === element.dia)
-                     borrar(indice)
-
-                 if (identificador === element.detalle)
-                     borrar(indice)
-
 
 
 
