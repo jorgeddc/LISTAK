@@ -8,6 +8,7 @@
          const BtnEnviar = document.getElementById("enviar");
          const template = document.getElementById("template").content;
          const tBody = document.getElementById("aqui")
+         
          let identificador 
          let identificadorInt
          const fragment = document.createDocumentFragment()
@@ -61,16 +62,23 @@
              tBody.appendChild(fragment)
          }
 
+         /*DEVUELVE ID*/
+
          tBody.addEventListener("click", e => {
             e.preventDefault
-            if (e.target.value.contains== document.querySelectorAll("td")[0]){
+            /*COMPRUEBA SI ES EL IDENTIFICADOR LO QUE PULSAN*/
+            if (e.target.classList.contains("identificador")){
             document.querySelector(".contenedor-boton").style.opacity="1"
             
              identificador = e.target.textContent
-             identificadorInt = parseInt(identificador)}
+             identificadorInt = parseInt(identificador)
+            }
+            else {
+                alert("HAS DE PULSAR EN IDENTIFICADOR")
+            }
          })
 
-        
+        /* BOTON DE BORRADO*/
          document.getElementById("erase").addEventListener("click", e =>{
             e.preventDefault()
             
@@ -94,7 +102,7 @@
          })
         
 
-        
+        /*FUNCION DE BORRADO */      
 
          const borrar = (erase) => {
              console.log(erase)
