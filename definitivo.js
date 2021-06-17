@@ -101,6 +101,8 @@
 
          })
 
+         /* EN ROJO */
+
         document.getElementById("important").addEventListener("click", e =>{
            
             e.preventDefault()
@@ -114,13 +116,39 @@
                     
                        document.querySelectorAll(".contenedor-incidencia")[indice].style.backgroundColor="red"
                        document.querySelectorAll(".contenedor-incidencia")[indice].style.color="white"
-
-                     return
+                         
+                      
+                        return
                  }
 
            })
 
            
+        })
+
+        /* BOTON UP*/
+
+        document.getElementById("up").addEventListener("click", e =>{
+
+            e.preventDefault()
+            document.querySelector(".contenedor-boton").style.opacity="0"
+           
+            incidencia.forEach(element=>{
+                       const indice = incidencia.findIndex(ind=>ind==element)
+                       if (identificadorInt == element.id)
+                       {
+                           let indiceAnt = indice -1
+                          
+                       const incidenciaAnt =  incidencia.splice(indiceAnt,1)
+                      
+                        incidencia.splice(indice,0,incidenciaAnt)
+                       
+                        console.log(incidenciaAnt)
+                   
+                          pintarTabla()
+                       }
+
+            })
         })
 
         /*FUNCION DE BORRADO */      
