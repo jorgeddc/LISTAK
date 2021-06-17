@@ -136,16 +136,43 @@
             incidencia.forEach(element=>{
                        const indice = incidencia.findIndex(ind=>ind==element)
                        if (identificadorInt == element.id)
-                       {
-                           let indiceAnt = indice -1
-                          
-                       const incidenciaAnt =  incidencia.splice(indiceAnt,1)
+                       {   
+                        
+                      let arriba=incidencia.shift()
+                      let abajo=incidencia.pop()
+                      incidencia.splice(indice,0,abajo,arriba)
                       
-                        incidencia.splice(indice,0,incidenciaAnt)
-                       
-                        console.log(incidenciaAnt)
+                     pintarTabla()
+                      
+                     
                    
-                          pintarTabla()
+                        
+                       }
+
+            })
+        })
+
+        /*BOTON DOWN*/
+        document.getElementById("down").addEventListener("click", e =>{
+
+            e.preventDefault()
+            document.querySelector(".contenedor-boton").style.opacity="0"
+           
+            incidencia.forEach(element=>{
+                       const indice = incidencia.findIndex(ind=>ind==element)
+                       if (identificadorInt == element.id)
+                       {   
+                         indicea=indice + 1;
+                        let abajo=incidencia.pop()
+                        let arriba=incidencia.shift()
+                      
+                      incidencia.splice(indicea,0,arriba,abajo)
+                      
+                     pintarTabla()
+                      
+                     
+                   
+                        
                        }
 
             })
