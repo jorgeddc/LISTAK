@@ -132,30 +132,23 @@
              e.preventDefault()
              document.querySelector(".contenedor-boton").style.opacity = "0"
              let sal = false;
-             cont = 1;
-             console.log(sal)
-             incidencia.map((element, i) => {
-                 console.log(sal)
-                 console.log(element.id)
-                 if (sal != true && identificadorInt == element.id && element.id != "") {
+                incidencia.forEach((element, i) => {
+                 if (sal != true && identificadorInt == element.id ) {
                      sal = true
-                     console.log(sal)
-                     let abajo = element.id
-                         //  let abajoInt = parseInt(abajo)
-                     console.log(abajo)
-                     incidencia.splice(i - 1, 0, element)
-                     incidencia.splice(i + 1, 1, abajo)
-                     if (element.id == identificadorInt) {
-                         incidencia.pop()
+                        let abajo = element.id
+                        
+                        incidencia.splice(i - 1, 0, element)
+                        incidencia.splice(i + 1, 1, abajo)
+                     
 
-                         pintarTabla()
-                     }
+                         
+                     
 
 
                  }
+                 eliminarDesechos()
 
-
-                 console.log(incidencia)
+               
 
 
 
@@ -171,24 +164,27 @@
              e.preventDefault()
              document.querySelector(".contenedor-boton").style.opacity = "0"
 
-             incidencia.forEach(element => {
-                 const indice = incidencia.findIndex(ind => ind == element)
-                 if (identificadorInt == element.id) {
-                     indicea = indice + 1;
-                     let abajo = incidencia.pop()
-                     let arriba = incidencia.shift()
+             incidencia.forEach((element,i) => {
+                let sal = false;
+                   
+                       if(sal!=true && identificadorInt == element.id)
+                       {
+                        sal = true
+                        let arriba = element.id
+                           console.log(arriba)
+                            incidencia.splice(i,1,arriba)
+                            console.log(i)
+                            incidencia.splice(i-1,0,element)
+                            console.log(i)
 
-                     incidencia.splice(indicea, 0, arriba, abajo)
+                       }
 
-                     pintarTabla()
-
-
-
-
-                 }
+                     eliminarDesechos()
+             
+                 })
 
              })
-         })
+         
 
          /*FUNCION DE BORRADO */
 
@@ -198,4 +194,24 @@
 
              pintarTabla()
          }
-     })
+     
+        
+        /*FUNCION DE BORRADO DE ELEMENTOS INDEFINIDOS QUE CREABA */
+        
+         const eliminarDesechos = () =>{
+        
+            incidencia.forEach((elemento,i)=>{
+
+                if (elemento.id===undefined)
+                  incidencia.splice(i,1)
+                   
+            })
+            pintarTabla()
+    
+         }
+        
+        
+        
+        })
+
+  
