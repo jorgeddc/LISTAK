@@ -8,9 +8,10 @@
          const BtnEnviar = document.getElementById("enviar");
          const template = document.getElementById("template").content;
          const tBody = document.getElementById("aqui")
-         
-         let identificador 
+
+         let identificador
          let identificadorInt
+
          const fragment = document.createDocumentFragment()
 
 
@@ -65,120 +66,131 @@
          /*DEVUELVE ID*/
 
          tBody.addEventListener("click", e => {
-            e.preventDefault
-            /*COMPRUEBA SI ES EL IDENTIFICADOR LO QUE PULSAN*/
-            if (e.target.classList.contains("identificador")){
-            document.querySelector(".contenedor-boton").style.opacity="1"
-            
-             identificador = e.target.textContent
-             identificadorInt = parseInt(identificador)
-            }
-            else {
-                alert("HAS DE PULSAR EN IDENTIFICADOR")
-            }
+             e.preventDefault
+                 /*COMPRUEBA SI ES EL IDENTIFICADOR LO QUE PULSAN*/
+             if (e.target.classList.contains("identificador")) {
+                 document.querySelector(".contenedor-boton").style.opacity = "1"
+
+                 identificador = e.target.textContent
+                 identificadorInt = parseInt(identificador)
+             } else {
+                 alert("HAS DE PULSAR EN IDENTIFICADOR")
+             }
          })
 
-        /* BOTON DE BORRADO*/
-         document.getElementById("erase").addEventListener("click", e =>{
-            e.preventDefault()
-            
-            document.querySelector(".contenedor-boton").style.opacity="0"
-            
-            incidencia.forEach(element => {
+         /* BOTON DE BORRADO*/
+         document.getElementById("erase").addEventListener("click", e => {
+             e.preventDefault()
 
-                const indice = incidencia.findIndex(ind => ind == element)
-               
-                if (identificadorInt === element.id) {
-                     
-                    borrar(indice)
-                    return
+             document.querySelector(".contenedor-boton").style.opacity = "0"
 
-                }
+             incidencia.forEach(element => {
+
+                 const indice = incidencia.findIndex(ind => ind == element)
+
+                 if (identificadorInt === element.id) {
+
+                     borrar(indice)
+                     return
+
+                 }
 
 
 
-            })
+             })
 
          })
 
          /* EN ROJO */
 
-        document.getElementById("important").addEventListener("click", e =>{
-           
-            e.preventDefault()
-            document.querySelector(".contenedor-boton").style.opacity="0"
+         document.getElementById("important").addEventListener("click", e => {
 
-           incidencia.forEach(element=>{
-                 const indice = incidencia.findIndex(ind=> ind == element)
-                 
-                 if(identificadorInt === element.id)
-                 {
-                    
-                       document.querySelectorAll(".contenedor-incidencia")[indice].style.backgroundColor="red"
-                       document.querySelectorAll(".contenedor-incidencia")[indice].style.color="white"
-                         
-                      
-                        return
+             e.preventDefault()
+             document.querySelector(".contenedor-boton").style.opacity = "0"
+
+             incidencia.forEach(element => {
+                 const indice = incidencia.findIndex(ind => ind == element)
+
+                 if (identificadorInt === element.id) {
+
+                     document.querySelectorAll(".contenedor-incidencia")[indice].style.backgroundColor = "red"
+                     document.querySelectorAll(".contenedor-incidencia")[indice].style.color = "white"
+
+
+                     return
                  }
 
-           })
+             })
 
-           
-        })
 
-        /* BOTON UP*/
+         })
 
-        document.getElementById("up").addEventListener("click", e =>{
+         /* BOTON UP*/
 
-            e.preventDefault()
-            document.querySelector(".contenedor-boton").style.opacity="0"
-           
-            incidencia.forEach(element=>{
-                       const indice = incidencia.findIndex(ind=>ind==element)
-                       if (identificadorInt == element.id)
-                       {   
-                        
-                      let arriba=incidencia.shift()
-                      let abajo=incidencia.pop()
-                      incidencia.splice(indice,0,abajo,arriba)
-                      
+         document.getElementById("up").addEventListener("click", e => {
+
+             e.preventDefault()
+             document.querySelector(".contenedor-boton").style.opacity = "0"
+             let sal = false;
+             cont = 1;
+             console.log(sal)
+             incidencia.map((element, i) => {
+                 console.log(sal)
+                 console.log(element.id)
+                 if (sal != true && identificadorInt == element.id && element.id != "") {
+                     sal = true
+                     console.log(sal)
+                     let abajo = element.id
+                         //  let abajoInt = parseInt(abajo)
+                     console.log(abajo)
+                     incidencia.splice(i - 1, 0, element)
+                     incidencia.splice(i + 1, 1, abajo)
+                     if (element.id == identificadorInt) {
+                         incidencia.pop()
+
+                         pintarTabla()
+                     }
+
+
+                 }
+
+
+                 console.log(incidencia)
+
+
+
+
+
+             })
+
+         })
+
+         /*BOTON DOWN*/
+         document.getElementById("down").addEventListener("click", e => {
+
+             e.preventDefault()
+             document.querySelector(".contenedor-boton").style.opacity = "0"
+
+             incidencia.forEach(element => {
+                 const indice = incidencia.findIndex(ind => ind == element)
+                 if (identificadorInt == element.id) {
+                     indicea = indice + 1;
+                     let abajo = incidencia.pop()
+                     let arriba = incidencia.shift()
+
+                     incidencia.splice(indicea, 0, arriba, abajo)
+
                      pintarTabla()
-                      
-                     
-                   
-                        
-                       }
 
-            })
-        })
 
-        /*BOTON DOWN*/
-        document.getElementById("down").addEventListener("click", e =>{
 
-            e.preventDefault()
-            document.querySelector(".contenedor-boton").style.opacity="0"
-           
-            incidencia.forEach(element=>{
-                       const indice = incidencia.findIndex(ind=>ind==element)
-                       if (identificadorInt == element.id)
-                       {   
-                         indicea=indice + 1;
-                        let abajo=incidencia.pop()
-                        let arriba=incidencia.shift()
-                      
-                      incidencia.splice(indicea,0,arriba,abajo)
-                      
-                     pintarTabla()
-                      
-                     
-                   
-                        
-                       }
 
-            })
-        })
+                 }
 
-        /*FUNCION DE BORRADO */      
+             })
+         })
+
+         /*FUNCION DE BORRADO */
 
          const borrar = (erase) => {
              console.log(erase)
@@ -186,4 +198,4 @@
 
              pintarTabla()
          }
-        }) 
+     })
