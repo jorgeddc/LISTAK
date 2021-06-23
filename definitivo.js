@@ -31,14 +31,9 @@
          function rellenarDatos() {
 
              incidencia.push(new Datos(Date.now(), cliente.value, tecnico.value, dia.value, detalle.value))
-             console.log(incidencia)
+
              pintarTabla()
-
-
          }
-
-
-
          BtnEnviar.addEventListener("click", e => {
              e.preventDefault()
              rellenarDatos();
@@ -74,7 +69,7 @@
                  identificador = e.target.textContent
                  identificadorInt = parseInt(identificador)
              } else {
-                 alert("HAS DE PULSAR EN IDENTIFICADOR")
+                 alert("HAS DE CLICKAR EN IDENTIFICADOR")
              }
          })
 
@@ -92,11 +87,7 @@
 
                      borrar(indice)
                      return
-
                  }
-
-
-
              })
 
          })
@@ -125,66 +116,44 @@
 
          })
 
-         /* BOTON UP*/
+         /* BOTON move*/
 
-         document.getElementById("up").addEventListener("click", e => {
+         document.getElementById("move").addEventListener("click", e => {
 
              e.preventDefault()
              document.querySelector(".contenedor-boton").style.opacity = "0"
              let sal = false;
-                incidencia.forEach((element, i) => {
-                 if (sal != true && identificadorInt == element.id ) {
+             incidencia.forEach((element, i) => {
+                 if (sal != true && identificadorInt == element.id) {
                      sal = true
-                        let abajo = element.id
-                        
-                        incidencia.splice(i - 1, 0, element)
-                        incidencia.splice(i + 1, 1, abajo)
-                     
+                     let abajo = element.id
 
-                         
-                     
-
-
+                     incidencia.splice(i - 1, 0, element)
+                     incidencia.splice(i + 1, 1, abajo)
                  }
                  eliminarDesechos()
-
-               
-
-
-
-
-
              })
 
          })
 
-         /*BOTON DOWN*/
-         document.getElementById("down").addEventListener("click", e => {
-
+         document.getElementById("editar").addEventListener("click", e => {
              e.preventDefault()
-             document.querySelector(".contenedor-boton").style.opacity = "0"
+             document.querySelector(".modificar-form").style.opacity = "1"
 
-             incidencia.forEach((element,i) => {
-                let sal = false;
-                   
-                       if(sal!=true && identificadorInt == element.id)
-                       {
-                        sal = true
-                        let arriba = element.id
-                           console.log(arriba)
-                            incidencia.splice(i,1,arriba)
-                            console.log(i)
-                            incidencia.splice(i-1,0,element)
-                            console.log(i)
+             incidencia.forEach((element, i) => {
 
-                       }
-
-                     eliminarDesechos()
-             
-                 })
-
+                 if (identificadorInt == element.id) {
+                     document.getElementById("dia-m").value = element.dia
+                     document.getElementById("tecnico-m").value = element.tecnico
+                     document.getElementById("cliente-m").value = element.cliente
+                     document.getElementById("detalles-m").value = element.detalle
+                 }
              })
-         
+
+
+
+         })
+
 
          /*FUNCION DE BORRADO */
 
@@ -194,24 +163,22 @@
 
              pintarTabla()
          }
-     
-        
-        /*FUNCION DE BORRADO DE ELEMENTOS INDEFINIDOS QUE CREABA */
-        
-         const eliminarDesechos = () =>{
-        
-            incidencia.forEach((elemento,i)=>{
 
-                if (elemento.id===undefined)
-                  incidencia.splice(i,1)
-                   
-            })
-            pintarTabla()
-    
+
+         /*FUNCION DE BORRADO DE ELEMENTOS INDEFINIDOS QUE CREABA */
+
+         const eliminarDesechos = () => {
+
+             incidencia.forEach((elemento, i) => {
+
+                 if (elemento.id === undefined)
+                     incidencia.splice(i, 1)
+
+             })
+             pintarTabla()
+
          }
-        
-        
-        
-        })
 
-  
+
+
+     })

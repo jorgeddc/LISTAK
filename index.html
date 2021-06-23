@@ -84,7 +84,7 @@
                 <!-- <button id="important"><i class="fa fa-exclamation-triangle" ></i></button>
                 <button id="delete"><i class="fa fa-trash"></i></button> -->
                
-                <!-- <button id="up"></button>
+                <!-- <button id="move"></button>
                 <button id="down"></button> -->
 
               </td>
@@ -100,30 +100,30 @@
 
     </table>
 
-  <!-- SECCION BOTONERAS -->
-<section>
+    <!-- SECCION BOTONERAS -->
+    <section>
 
-    <div class="contenedor-boton">
-  
-      <button id="important" class="btn btn-outline-success ml-1 m-1"><i class="fa fa-exclamation-triangle" ></i></button>
-      <button id="erase" class="btn btn-outline-danger ml-1 m-1"><i class="fa fa-trash"></i></button>
-      <button class="editar btn btn-ouline-dark"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
-      <button id="up" class="flecha-arriba btn btn-ouline-dark"></button>
-      <button id="down" class="flecha-abajo btn btn-ouline-dark"></button>
-  
-  
-    </div>
-  </section>
+        <div class="contenedor-boton">
+
+            <button id="important" class="btn btn-outline-success ml-1 m-1"><i class="fa fa-exclamation-triangle" ></i></button>
+            <button id="erase" class="btn btn-outline-danger ml-1 m-1"><i class="fa fa-trash"></i></button>
+            <button id="editar" class="editar btn btn-ouline-dark"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+            <button id="move" class="flecha-arriba btn btn-ouline-dark"></button>
+            <!-- <button id="down" class="flecha-abajo btn btn-ouline-dark"></button> -->
+
+
+        </div>
+    </section>
 
     <!-- SECCION MODIFICADO -->
     <section>
 
         <div class="modificar">
             <form class="modificar-form">
-                <h1 class="h3">ID:</h1>
+
                 <input type="text" id="dia-m">
-                <!-- <input type="text" id="tecnico-m"> -->
-                <select id="tecnico-m-choose" required>
+
+                <select class="form-select tecnico" id="tecnico-m" required>
               <option selected disabled value="">Choose...</option>
               <option>David</option>
               <option>Valentin</option>
