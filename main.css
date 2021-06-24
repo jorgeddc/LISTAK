@@ -119,3 +119,7 @@ th {
     opacity: 0;
     justify-content: space-around;
 }
+
+#template tr.rojo{
+    background:red;
+}

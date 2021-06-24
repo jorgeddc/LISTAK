@@ -8,8 +8,10 @@
          const BtnEnviar = document.getElementById("enviar");
          const template = document.getElementById("template").content;
          const tBody = document.getElementById("aqui")
-         let rojo
-         let rojoI = [0]
+        
+       
+       
+         let rojoI = []
          let identificador
          let identificadorInt
 
@@ -41,7 +43,7 @@
 
          })
 
-         const pintarTabla = () => {
+         const pintarTabla = (rojo) => {
 
              tBody.innerHTML = ""
              incidencia.forEach(element => {
@@ -52,34 +54,28 @@
                  clone.querySelectorAll("td")[3].textContent = element.cliente
                  clone.querySelectorAll("td")[4].textContent = element.detalle
 
+                
+               
                  for (let i = 0; i <= rojoI.length; i++) {
-                     if (rojoI[i] === element.id) {
-
-                         const indice = incidencia.findIndex(ind => ind == element)
-
-                         console.log("entro")
-                         tBody.style.backgroundColor = "red"
-                         tBody.style.color = "white"
-
-                     }
-                 }
+                    
+                    if (rojoI[i] === element.id  )
+                         
+                         {
+                          
+                          const indice = incidencia.findIndex(ind => ind == element)
+                          console.log("entro")
+                          clone.querySelector(".contenedor-incidencia").style.backgroundColor="red"
+                          clone.querySelector(".contenedor-incidencia").style.color="white"
+                         }
+                         
+                        }
+                    
                  fragment.appendChild(clone)
              })
              tBody.appendChild(fragment)
          }
 
-
-
-
-
-
-
-
-
-
-
-
-         /*DEVUELVE ID*/
+      /*DEVUELVE ID*/
 
          tBody.addEventListener("click", e => {
              e.preventDefault
@@ -124,10 +120,10 @@
                  const indice = incidencia.findIndex(ind => ind == element)
 
                  if (identificadorInt === element.id) {
-                     rojo = true;
+                     
                      rojoI.push(identificadorInt)
 
-                     pintarTabla(rojoI)
+                     pintarTabla()
 
 
 
