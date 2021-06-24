@@ -8,7 +8,8 @@
          const BtnEnviar = document.getElementById("enviar");
          const template = document.getElementById("template").content;
          const tBody = document.getElementById("aqui")
-
+         let rojo
+         let rojoI = [0]
          let identificador
          let identificadorInt
 
@@ -51,12 +52,32 @@
                  clone.querySelectorAll("td")[3].textContent = element.cliente
                  clone.querySelectorAll("td")[4].textContent = element.detalle
 
+                 for (let i = 0; i <= rojoI.length; i++) {
+                     if (rojoI[i] === element.id) {
 
+                         const indice = incidencia.findIndex(ind => ind == element)
+
+                         console.log("entro")
+                         tBody.style.backgroundColor = "red"
+                         tBody.style.color = "white"
+
+                     }
+                 }
                  fragment.appendChild(clone)
-
              })
              tBody.appendChild(fragment)
          }
+
+
+
+
+
+
+
+
+
+
+
 
          /*DEVUELVE ID*/
 
@@ -103,12 +124,14 @@
                  const indice = incidencia.findIndex(ind => ind == element)
 
                  if (identificadorInt === element.id) {
+                     rojo = true;
+                     rojoI.push(identificadorInt)
 
-                     document.querySelectorAll(".contenedor-incidencia")[indice].style.backgroundColor = "red"
-                     document.querySelectorAll(".contenedor-incidencia")[indice].style.color = "white"
+                     pintarTabla(rojoI)
 
 
-                     return
+
+
                  }
 
              })
@@ -136,6 +159,8 @@
 
          })
 
+         /* BOTON EDITAR*/
+
          document.getElementById("editar").addEventListener("click", e => {
              e.preventDefault()
              document.querySelector(".modificar-form").style.opacity = "1"
@@ -152,16 +177,20 @@
          })
          document.querySelector(".btn-modifica").addEventListener("click", (e) => {
              e.preventDefault()
-             let i = incidencia.findIndex(ind => ind == incidencia.id)
-
-             incidencia[i].instalacion = document.getElementById("dia-m").value
-             incidencia[i].tecnico = document.getElementById("tecnico-m").value
-             incidencia[i].cliente = document.getElementById("cliente-m").value
-             incidencia[i].detalle = document.getElementById("detalles-m").value
 
 
+             incidencia.forEach(element => {
 
-             console.log(incidencia)
+                 if (identificadorInt == element.id) {
+                     element.instalacion = document.getElementById("dia-m").value
+                     element.tecnico = document.getElementById("tecnico-m").value
+                     element.cliente = document.getElementById("cliente-m").value
+                     element.detalle = document.getElementById("detalles-m").value
+                 }
+
+             })
+
+
              document.querySelector(".modificar-form").style.opacity = "0"
 
              pintarTabla()
