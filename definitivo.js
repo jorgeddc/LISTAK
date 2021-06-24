@@ -149,10 +149,26 @@
                      document.getElementById("detalles-m").value = element.detalle
                  }
              })
+         })
+         document.querySelector(".btn-modifica").addEventListener("click", (e) => {
+             e.preventDefault()
+             let i = incidencia.findIndex(ind => ind == incidencia.id)
+
+             incidencia[i].instalacion = document.getElementById("dia-m").value
+             incidencia[i].tecnico = document.getElementById("tecnico-m").value
+             incidencia[i].cliente = document.getElementById("cliente-m").value
+             incidencia[i].detalle = document.getElementById("detalles-m").value
 
 
+
+             console.log(incidencia)
+             document.querySelector(".modificar-form").style.opacity = "0"
+
+             pintarTabla()
 
          })
+
+
 
 
          /*FUNCION DE BORRADO */
