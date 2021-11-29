@@ -1,6 +1,6 @@
  document.addEventListener("DOMContentLoaded", () =>
 
-     {
+    {
          const cliente = document.getElementById("cliente");
          const tecnico = document.getElementById("tecnico");
          const dia = document.getElementById("instalacion");
