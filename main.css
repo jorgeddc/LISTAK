@@ -27,7 +27,7 @@ th {
 }
 
 .modificar-form {
-    width: 600px;
+    width: 450px;
     min-height: 250px;
     border: 4px solid #777;
     background-color: #ccc;
@@ -42,7 +42,7 @@ th {
 
 .modificar-form input,
 .modificar-form #tecnico-m {
-    width: 70%;
+    width: 90%;
     border: none;
     margin: 10px;
     text-align: center;
@@ -123,4 +123,14 @@ th {
 
 #template tr.rojo{
     background:red;
+}
+
+@media ( max-width:500px)
+{
+
+    .modificar-form
+    {
+       margin-right: -50px;
+    }
+
 }
